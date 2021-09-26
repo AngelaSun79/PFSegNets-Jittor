@@ -15,8 +15,8 @@ import optimizer
 
 jt.flags.use_cuda = 1
 
-# Argument Parser
-parser = argparse.ArgumentParser(description='Semantic Segmentation')
+# Argument Parser  参数解析器
+parser = argparse.ArgumentParser(description='Semantic Segmentation')  # 语义分割
 parser.add_argument('--lr', type=float, default=0.002)
 parser.add_argument('--arch', type=str, default='network.deepv3.DeepWV3Plus',
                     help='Network architecture. We have DeepSRNX50V3PlusD (backbone: ResNeXt50) \
