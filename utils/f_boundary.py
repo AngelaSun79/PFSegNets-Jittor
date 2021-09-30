@@ -2,7 +2,7 @@ import numpy as np
 from multiprocessing import Pool
 from tqdm import tqdm
 
-""" Utilities for computing, reading and saving benchmark evaluation."""
+""" Utilities for computing, reading and saving benchmark evaluation.用于计算、读取和保存基准评估的实用程序"""
 
 
 def eval_mask_boundary(seg_mask, gt_mask, num_classes, num_proc=10, bound_th=0.008):
