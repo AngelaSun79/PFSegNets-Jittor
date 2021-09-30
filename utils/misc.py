@@ -1,5 +1,5 @@
 """
-Miscellanous Functions
+Miscellanous Functions  混合函数
 """
 
 import sys
@@ -22,7 +22,7 @@ def make_exp_name(args, parser):
     argnames = sorted(dict_args)
     ignorelist = ['exp', 'arch', 'prev_best_filepath', 'lr_schedule', 'max_cu_epoch', 'max_epoch',
                   'strict_bdr_cls', 'world_size', 'tb_path', 'best_record', 'test_mode', 'ckpt', 'syncbn']
-    # build experiment name with non-default args
+    # build experiment name with non-default args  使用非默认参数生成实验名称
     for argname in argnames:
         if dict_args[argname] != parser.get_default(argname):
             if argname in ignorelist:
@@ -84,7 +84,7 @@ def per_class_iu(hist):
     return np.diag(hist) / (hist.sum(1) + hist.sum(0) - np.diag(hist))
 
 
-def save_log(prefix, output_dir, date_str, rank=0):
+def save_log(prefix, output_dir, date_str, rank=0):  # log日志文件的保存
     fmt = '%(asctime)s.%(msecs)03d %(message)s'
     date_fmt = '%m-%d %H:%M:%S'
     filename = os.path.join(output_dir, prefix + '_' +
@@ -114,6 +114,7 @@ def prep_experiment(args, parser):
     args.tb_exp_path = os.path.join(tb_path, args.exp, exp_name)
     args.ngpu = jt.get_device_count()
     args.date_str = str(datetime.now().strftime('%Y_%m_%d_%H_%M_%S'))
+    # best_record
     args.best_record = {'epoch': -1, 'iter': 0, 'val_loss': 1e10, 'acc': 0,
                         'acc_cls': 0, 'mean_iu': 0, 'fwavacc': 0}
     args.last_record = {}
@@ -131,6 +132,7 @@ def evaluate_eval_for_inference(hist, dataset=None, with_f1=False, beta=1):
     """
     Modified IOU mechanism for on-the-fly IOU calculations ( prevents memory overflow for
     large dataset) Only applies to eval/eval.py
+    用于实时IOU计算的修改IOU机制（防止大数据集内存溢出）仅适用于eval/eval.py
     """
     # axis 0: gt, axis 1: prediction
     all_acc = np.diag(hist).sum() / hist.sum()
