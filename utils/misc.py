@@ -1,5 +1,5 @@
 """
-Miscellanous Functions
+Miscellanous Functions  混合函数
 """
 
 import sys
@@ -84,7 +84,7 @@ def per_class_iu(hist):
     return np.diag(hist) / (hist.sum(1) + hist.sum(0) - np.diag(hist))
 
 
-def save_log(prefix, output_dir, date_str, rank=0):
+def save_log(prefix, output_dir, date_str, rank=0):  # log日志文件的保存
     fmt = '%(asctime)s.%(msecs)03d %(message)s'
     date_fmt = '%m-%d %H:%M:%S'
     filename = os.path.join(output_dir, prefix + '_' +
