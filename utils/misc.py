@@ -1,5 +1,5 @@
 """
-Miscellanous Functions
+Miscellanous Functions  混合函数
 """
 
 import sys
